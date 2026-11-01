@@ -6,6 +6,10 @@ services:
       dockerfile: Dockerfile
     container_name: sistema-web-v1-backend
     restart: unless-stopped
+    environment:
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      LICITACAO_REPOSITORY: ${LICITACAO_REPOSITORY:-carlos-andrade/LICITACAO}
+      LICITACAO_REF: ${LICITACAO_REF:-main}
     ports:
       - "192.168.60.141:8000:8000"
     healthcheck:
