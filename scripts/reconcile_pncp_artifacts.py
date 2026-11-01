@@ -39,7 +39,7 @@ def val(x):
         return "Sim" if x else "Não"
     if isinstance(x, (dict, list)):
         return json.dumps(x, ensure_ascii=False, sort_keys=True)
-    return re.sub(r"\\s+", " ", str(x)).strip()
+    return re.sub(r"\s+", " ", str(x)).strip()
 
 def pick(d, *keys, default=""):
     for key in keys:
@@ -55,7 +55,7 @@ def obj(d, key):
 def edital_url(d):
     control = val(pick(d, "numeroControlePNCP", "numeroControlePncp"))
     if control:
-        match = re.fullmatch(r"(\\d{14})-(\\d+)-(\\d+)/(\\d{4})", control)
+        match = re.fullmatch(r"(\d{14})-(\d+)-(\d+)/(\d{4})", control)
         if match:
             cnpj, modalidade, seq, ano = match.groups()
             return f"https://pncp.gov.br/app/editais/{cnpj}/{ano}/{seq}"
