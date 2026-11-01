@@ -43,10 +43,12 @@ Instruções: [docs/V1-BOOTSTRAP.md](docs/V1-BOOTSTRAP.md).
 
 ## Roadmap
 1. **V1 — Bootstrap:** dashboard dark, API e Docker Compose.
-2. **V1.x — Validação operacional:** arranque no Ubuntu, comunicação frontend/API, logs e navegador.
-3. **V2 — Fundação aplicacional:** autenticação, persistência e migrações após desenho dos requisitos.
-4. **V3 — Módulos funcionais:** domínios e integrações definidos por requisitos próprios.
-5. **Homologação:** segurança, backups, recuperação, observabilidade e implantação controlada.
+2. **V1.1 — Navegação e validação:** seis módulos, comunicação frontend/API e homologação manual.
+3. **V1.2 — LICITACAO read-only:** conector GitHub privado, validação JSON Schema e apresentação da oportunidade de referência com proveniência. Build e teste no Ubuntu ainda pendentes.
+4. **V1.3 — Consulta de dados:** catálogo, pesquisa e ingestão controlada de oportunidades e documentos, após validação da prova de conceito.
+5. **V2 — Fundação aplicacional:** autenticação e persistência após desenho dos requisitos.
+6. **V3 — Módulos funcionais:** domínios e integrações adicionais.
+7. **Homologação:** segurança, backups, recuperação, observabilidade e implantação controlada.
 
 ## Ambiente conhecido
 O servidor de laboratório Ubuntu 24.04 possui Docker e Docker Compose. O acesso administrativo e as interfaces web dos serviços existentes utilizam `192.168.60.141`. A configuração real deve ser novamente validada antes do primeiro arranque desta stack.

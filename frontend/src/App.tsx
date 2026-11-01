@@ -41,6 +41,99 @@ function Placeholder({ title, description, icon: Icon, items }: {
   </section>;
 }
 
+
+type LicitationResult = {
+  data: {
+    id: string;
+    object: string;
+    status: string;
+    validation_status: string;
+    buyer?: { name?: string | null; city?: string | null; state?: string | null } | null;
+    estimated_value?: { amount: number; currency: string; evidence_status: string } | null;
+    source: { system: string; external_id?: string | null; url: string; captured_at: string; capture_status: string };
+  };
+  provenance: {
+    repository: string;
+    ref: string;
+    path: string;
+    blob_sha: string;
+    content_sha256: string;
+    validation: string;
+    access_mode: string;
+  };
+};
+
+function LicitationIntegration() {
+  const [result, setResult] = useState<LicitationResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  async function load() {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch("/api/integrations/licitation/opportunities/reference");
+      const body = await response.json();
+      if (!response.ok) {
+        const detail = typeof body.detail === "string" ? body.detail : body.detail?.message;
+        throw new Error(detail || `Falha HTTP ${response.status}`);
+      }
+      setResult(body as LicitationResult);
+    } catch (e) {
+      setResult(null);
+      setError(e instanceof Error ? e.message : "Falha desconhecida na integração.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    void load();
+  }, []);
+
+  return <section className="module-page">
+    <article className="module-intro card">
+      <div className="module-icon"><Workflow /></div>
+      <div><label>FONTE PRIVADA · CONSULTA</label><h2>LICITACAO</h2>
+        <p>Leitura do repositório de origem através do backend. Nenhuma operação de escrita é executada na fonte.</p>
+      </div>
+    </article>
+    <section className="sectionhead"><div><label>PROVA DE CONCEITO V1.2</label><h3>Oportunidade de referência</h3></div>
+      <button className="text-action" type="button" onClick={() => void load()} disabled={loading}>
+        <RefreshCw size={13}/> {loading ? "A CONSULTAR" : "ATUALIZAR FONTE"}
+      </button>
+    </section>
+    {loading && <article className="module-item card"><Status>Consulta ao GitHub em curso</Status></article>}
+    {error && <article className="notice"><AlertCircle size={17}/><p><b>Integração indisponível.</b> {error} Configure o token de leitura no ambiente do backend e tente novamente.</p></article>}
+    {result && <>
+      <article className="module-item card">
+        <div><label>IDENTIFICADOR</label><h3>{result.data.id}</h3><p>{result.data.object}</p></div>
+        <Status kind={result.provenance.validation === "valid" ? "good" : "pending"}>
+          {result.provenance.validation === "valid" ? "Schema válido" : "Validação pendente"}
+        </Status>
+      </article>
+      <section className="metrics">
+        <article><label>ÓRGÃO COMPRADOR</label><b>{result.data.buyer?.name ?? "Não informado"}</b><small>{[result.data.buyer?.city, result.data.buyer?.state].filter(Boolean).join(" / ") || "Local não informado"}</small></article>
+        <article><label>ESTADO DA OPORTUNIDADE</label><b>{result.data.status}</b><small><i className="pending"/> Estado declarado na origem</small></article>
+        <article><label>VALIDAÇÃO DE CONTEÚDO</label><b>{result.data.validation_status}</b><small><i className={result.data.validation_status === "validated" ? "good" : "pending"}/> Não equivale à validação material</small></article>
+        <article><label>VALOR ESTIMADO</label><b>{result.data.estimated_value ? new Intl.NumberFormat("pt-PT", { style: "currency", currency: result.data.estimated_value.currency }).format(result.data.estimated_value.amount) : "Não informado"}</b><small>{result.data.estimated_value?.evidence_status ?? "Sem evidência"}</small></article>
+      </section>
+      <article className="card">
+        <div className="cardhead"><div><label>PROVENIÊNCIA</label><h3>Rastreabilidade da fonte</h3></div><Database/></div>
+        <div className="detail"><span>Repositório</span><b>{result.provenance.repository}</b></div>
+        <div className="detail"><span>Branch</span><b>{result.provenance.ref}</b></div>
+        <div className="detail"><span>Validação estrutural</span><b>{result.provenance.validation}</b></div>
+        <div className="detail"><span>Modo de acesso</span><b>{result.provenance.access_mode}</b></div>
+        <div className="detail"><span>Git blob SHA</span><code>{result.provenance.blob_sha}</code></div>
+        <div className="detail"><span>SHA-256 do conteúdo</span><code>{result.provenance.content_sha256}</code></div>
+        <p className="connection">Ficheiro: <code>{result.provenance.path}</code></p>
+      </article>
+      <article className="notice"><AlertCircle size={17}/><p><b>Limite de validação.</b> Schema válido confirma estrutura e tipos de dados. Não confirma a exatidão factual, a atualidade do edital nem a sua viabilidade.</p></article>
+    </>}
+    <footer>LICITACAO · FONTE EXTERNA READ-ONLY</footer>
+  </section>;
+}
+
 export default function App() {
   const [active, setActive] = useState<Module>("Visão geral");
   const [health, setHealth] = useState<Health | null>(null);
@@ -130,12 +223,7 @@ export default function App() {
         { title: "Serviços do sistema operativo", detail: "Inventário e estado por agente/API ainda não integrados", state: "Não integrado" },
       ]}/>}
 
-      {active === "Integrações" && <Placeholder title="Integrações" description="Catálogo de conectores previstos. A primeira integração será de leitura, sem capacidade de alterar os serviços de origem." icon={Workflow} items={[
-        { title: "Zabbix", detail: "API para consulta de hosts, problemas e métricas", state: "Próxima integração" },
-        { title: "ChirpStack", detail: "API para consulta de gateways, dispositivos e eventos LoRaWAN", state: "Planeado" },
-        { title: "Docker Engine", detail: "Consulta de estado e metadados dos contentores", state: "Planeado" },
-        { title: "Ubuntu Server", detail: "Consulta controlada de recursos e serviços", state: "Planeado" },
-      ]}/>}
+      {active === "Integrações" && <LicitationIntegration />}
 
       {active === "Dados" && <Placeholder title="Dados" description="Camada responsável pela persistência, organização, qualidade e rastreabilidade da informação." icon={Database} items={[
         { title: "API de saúde", detail: "Resposta operacional consultada diretamente no backend", state: health ? "Disponível" : "Sem confirmação", kind: health ? "good" : "pending" },
