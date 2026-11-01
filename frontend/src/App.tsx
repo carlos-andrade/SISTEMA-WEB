@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
+import type { ReactNode } from "react";
 import {
-  Activity, ArrowUpRight, Bell, Boxes, CheckCircle2, CircleHelp,
-  Command, Cpu, Database, Gauge, LayoutDashboard, Network, Server,
-  ShieldCheck, Workflow, Cable, LockKeyhole, HardDrive, Radio,
+  Activity, ArrowUpRight, Bell, Boxes, Command, Cpu, Database,
+  Gauge, LayoutDashboard, Network, Server, ShieldCheck, Workflow,
   RefreshCw, AlertCircle
 } from "lucide-react";
 
@@ -18,7 +18,7 @@ const nav: { name: Module; icon: typeof LayoutDashboard; group: "PLATAFORMA" | "
   { name: "Segurança", icon: ShieldCheck, group: "SISTEMA" },
 ];
 
-function Status({ kind = "pending", children }: { kind?: "good" | "pending" | "neutral"; children: React.ReactNode }) {
+function Status({ kind = "pending", children }: { kind?: "good" | "pending" | "neutral"; children: ReactNode }) {
   return <span className="statusline"><i className={kind} />{children}</span>;
 }
 
