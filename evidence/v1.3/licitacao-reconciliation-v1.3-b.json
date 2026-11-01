@@ -1,0 +1,66 @@
+{
+  "generated_at_utc": "2026-11-01T17:48:54+00:00",
+  "source": "carlos-andrade/LICITACAO",
+  "ref": "main",
+  "mode": "read-only",
+  "capture_timestamp": "2026-10-30T15:08:35+00:00",
+  "artifact_sha256": {
+    "EDITAIS/pncp-editais-metadados.json": "5fd323dfcd6ca17d88f4b0c99d9673edeeba8c6a4e270ce61c92f8128e058c6c",
+    "EDITAIS/pncp-editais-abertos.csv": "5c9a2f782067740b372a290ec14e5519e48b9fd2052f6793639838410888353c",
+    "EDITAIS/pncp-editais-abertos.json": "7a209da86d1db61b2e7a44e94107c0db315c06d5530139018752152327a8ed36",
+    "EDITAIS/pncp-editais-abertos.xlsx": "e687ccbfa064f8c428a4e0a7c7677b3f409c11e1a50e542537a964bf1fab4dea"
+  },
+  "counts": {
+    "csv_records": 34,
+    "json_records": 34,
+    "xlsx_data_rows": 34,
+    "unique_ids_union": 34,
+    "ids_by_format": {
+      "csv": 34,
+      "json_flattened": 34,
+      "xlsx": 34
+    }
+  },
+  "id_reconciliation": {
+    "same_id_set_all_three": true,
+    "missing_ids_by_format": {
+      "csv": [],
+      "json_flattened": [],
+      "xlsx": []
+    },
+    "duplicate_ids": {
+      "csv": [],
+      "json_flattened": [],
+      "xlsx": []
+    }
+  },
+  "schema_reconciliation": {
+    "expected_columns": 26,
+    "csv_columns": 26,
+    "xlsx_columns": 26,
+    "header_issues": {
+      "csv_missing_or_extra_columns": [],
+      "xlsx_missing_or_extra_columns": []
+    }
+  },
+  "cell_reconciliation": {
+    "comparison": "CSV vs JSON flattened with source mapping vs XLSX",
+    "fields_with_mismatches": {},
+    "mismatch_count": 0,
+    "mismatches_truncated_at": 1000,
+    "mismatches": []
+  },
+  "known_mapping_semantics": {
+    "uf": "flatten replicates source mapping: unit.uf then root.uf; unit.ufSigla is not consulted",
+    "link_sistema_origem": "flatten replicates fallback order: linkSistemaOrigem then linkProcessoEletronico",
+    "link_pncp": "derived URL, not a direct source JSON field",
+    "capturado_em_utc": "capture metadata timestamp, not a direct field in each source record"
+  },
+  "xlsx_metadata_sheet_present": true,
+  "limitations": [
+    "JSON flattened values are independently recomputed by a faithful replica of the source flatten mapping.",
+    "The reconciliation compares exported values as strings; it does not infer semantic equivalence beyond the source's flatten rules.",
+    "The source repository is accessed only through GitHub GET operations.",
+    "Mismatch detail is capped at 1000 entries; per-field counts cover all records."
+  ]
+}
