@@ -1,0 +1,198 @@
+{
+  "generated_at_utc": "2026-11-01T17:28:53+00:00",
+  "source": "carlos-andrade/LICITACAO",
+  "ref": "main",
+  "repository": {
+    "private": true,
+    "default_branch": "main",
+    "size_kb": 14531,
+    "tree_truncated": false,
+    "total_tree_entries": 461,
+    "relevant_architecture_and_edital_paths": 94,
+    "relevant_extensions": {
+      "[sem extensão]": 14,
+      "bin": 8,
+      "csv": 15,
+      "json": 18,
+      "md": 15,
+      "pdf": 19,
+      "php": 1,
+      "xlsx": 4
+    }
+  },
+  "artifacts": {
+    "EDITAIS/pncp-editais-metadados.json": {
+      "git_blob_sha": "bb0a1fba742e7fa71de25c5a966e4bcc9cb22f0a",
+      "bytes": 1070,
+      "sha256": "5fd323dfcd6ca17d88f4b0c99d9673edeeba8c6a4e270ce61c92f8128e058c6c"
+    },
+    "EDITAIS/pncp-editais-abertos.csv": {
+      "git_blob_sha": "8d724ba1b943ee089f5803f2e59b1cd80c9f9e7d",
+      "bytes": 23620,
+      "sha256": "5c9a2f782067740b372a290ec14e5519e48b9fd2052f6793639838410888353c"
+    },
+    "EDITAIS/pncp-editais-abertos.json": {
+      "git_blob_sha": "70fbcac9d77ae614c1e8ea728fd96efb3695e8b3",
+      "bytes": 83125,
+      "sha256": "7a209da86d1db61b2e7a44e94107c0db315c06d5530139018752152327a8ed36"
+    },
+    "EDITAIS/pncp-editais-abertos.xlsx": {
+      "git_blob_sha": "c0b5e67130a77675ef827a850ed1b8abaffc7b6a",
+      "bytes": 17537,
+      "sha256": "e687ccbfa064f8c428a4e0a7c7677b3f409c11e1a50e542537a964bf1fab4dea"
+    }
+  },
+  "capture_metadata": {
+    "status": "COMPLETO",
+    "capturado_em_utc": "2026-10-30T15:08:35+00:00",
+    "url_origem": "https://pncp.gov.br/app/editais?pagina=1&status=recebendo_proposta&tam_pagina=100&tem_nfe_contrato=false&indicador_orcamento_sigiloso=false&modalidades=8",
+    "api_endpoint": "https://pncp.gov.br/api/consulta/v1/contratacoes/proposta",
+    "dataFinal": "20261030",
+    "codigoModalidadeContratacao": 8,
+    "tamanhoPaginaAPI": 50,
+    "filtros_da_tela_registrados_na_origem": {
+      "status": "recebendo_proposta",
+      "tam_pagina": 100,
+      "tem_nfe_contrato": false,
+      "indicador_orcamento_sigiloso": false,
+      "modalidades": [
+        8
+      ]
+    },
+    "nota_filtros": "O endpoint /contratacoes/proposta oferece recebimento aberto e filtro de modalidade. Os parâmetros tem_nfe_contrato e indicador_orcamento_sigiloso não estão documentados para este endpoint, portanto não foram simulados.",
+    "paginas_consultadas": 1,
+    "total_paginas_informado_pela_api": 1,
+    "total_registros_informado_pela_api": 34,
+    "registros_unicos_capturados": 34,
+    "limite_max_paginas_configurado": 0
+  },
+  "csv": {
+    "records": 34,
+    "distinct_ids": 34,
+    "duplicate_ids": [],
+    "columns": [
+      "numero_controle_pncp",
+      "numero_compra",
+      "ano_compra",
+      "modalidade_id",
+      "modalidade_nome",
+      "situacao",
+      "objeto",
+      "orgao_cnpj",
+      "orgao_nome",
+      "unidade_codigo",
+      "unidade_nome",
+      "uf",
+      "municipio",
+      "data_publicacao_pncp",
+      "data_atualizacao",
+      "data_abertura_proposta",
+      "data_encerramento_proposta",
+      "valor_total_estimado",
+      "valor_total_homologado",
+      "srp",
+      "amparo_legal",
+      "modo_disputa",
+      "fonte_sistema",
+      "link_sistema_origem",
+      "link_pncp",
+      "capturado_em_utc"
+    ],
+    "xlsx_rows_are_not_inferred": true
+  },
+  "json": {
+    "records": 34,
+    "distinct_ids": 34,
+    "duplicate_ids": [],
+    "same_id_set_as_csv": true
+  },
+  "xlsx": {
+    "bytes": 17537,
+    "sheets": {
+      "Editais PNCP": {
+        "nonempty_rows": 35,
+        "header": [
+          "numero_controle_pncp",
+          "numero_compra",
+          "ano_compra",
+          "modalidade_id",
+          "modalidade_nome",
+          "situacao",
+          "objeto",
+          "orgao_cnpj",
+          "orgao_nome",
+          "unidade_codigo",
+          "unidade_nome",
+          "uf",
+          "municipio",
+          "data_publicacao_pncp",
+          "data_atualizacao",
+          "data_abertura_proposta",
+          "data_encerramento_proposta",
+          "valor_total_estimado",
+          "valor_total_homologado",
+          "srp",
+          "amparo_legal",
+          "modo_disputa",
+          "fonte_sistema",
+          "link_sistema_origem",
+          "link_pncp",
+          "capturado_em_utc"
+        ],
+        "data_rows": 34,
+        "first_data_row": [
+          "14100747000126-1-000006/2026",
+          "004",
+          "2026",
+          "8",
+          "Dispensa",
+          "Divulgada no PNCP",
+          "obtenção de propostas adicionais mais vantajosas, para Contratação de empresa especializada para o fornecimento de serviços de ornamentação temática e coffee break, incluindo planejamento, montagem, fornecimento de materiais, alimentos e bebidas, bem como a organização e disposição dos itens, destinados à Jornada Pedagógica no dia 03 de fevereiro de 2026, conforme as especificações estabelecidas no Termo de Referência.",
+          "14100747000126",
+          "MUNICIPIO DE RIACHAO DAS NEVES",
+          "1838",
+          "Prefeitura Municipal de Riachão das Neves",
+          "",
+          "Riachão das Neves",
+          "2026-01-28T08:17:10",
+          "2026-01-28T08:17:10",
+          "2026-01-28T08:00:00",
+          "2026-10-30T17:00:00",
+          "63755.11",
+          "",
+          "Não",
+          "Lei 14.133/2021, Art. 1º, § 2º",
+          "Não se aplica",
+          "IBDM Modernização Assessoria e Consultoria",
+          "",
+          "https://pncp.gov.br/app/editais/14100747000126/2026/000006",
+          "2026-10-30T15:08:35+00:00"
+        ]
+      },
+      "Metadados": {
+        "nonempty_rows": 15,
+        "header": [
+          "Campo",
+          "Valor"
+        ],
+        "data_rows": 14,
+        "first_data_row": [
+          "status",
+          "COMPLETO"
+        ]
+      }
+    },
+    "csv_json_reconciliation_not_assumed": true
+  },
+  "source_script_findings": {
+    "uf_mapping_uses_uf_instead_of_ufSigla": true,
+    "origin_link_falls_back_to_linkProcessoEletronico": true,
+    "xlsx_generated_from_flattened_rows": true
+  },
+  "limitations": [
+    "A enumeração é integral apenas se tree_truncated for false.",
+    "O script calcula SHA-256 dos bytes recuperados e conserva os Git Blob SHAs.",
+    "O XLSX é lido diretamente por ZIP/XML; não depende de openpyxl.",
+    "Este script não escreve no repositório de origem."
+  ]
+}
