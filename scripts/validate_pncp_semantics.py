@@ -89,7 +89,15 @@ def main():
       "capture_timestamp_utc":captured_raw,"business_timezone":"America/Sao_Paulo",
       "source_artifacts_sha256":{p:hashlib.sha256(b).hexdigest() for p,b in blobs.items()},
       "scope":{"records":len(rows),"unique_control_ids":len(set(ids)),"duplicate_control_ids":dup,"metadata_status":meta.get("status"),"api_reported_records":meta.get("total_registros_informado_pela_api")},
-      "missingness_counts":{k:sum(r.get(k) is None or r.get(k)=="" for r in rows) for k in fields},
+      "missingness_counts": {
+          k: sum(
+              r.get(k) is None
+              or (isinstance(r.get(k), str) and not r.get(k).strip())
+              for r in rows
+          )
+          for k in fields
+      },
+
       "distributions":{k:dict(Counter(str((r.get("unidadeOrgao") or {}).get(k)) if k=="ufSigla" else str(r.get(k)) for r in rows)) for k in ("modalidadeId","modalidadeNome","situacaoCompraId","situacaoCompraNome","modoDisputaNome","tipoInstrumentoConvocatorioNome","ufSigla")},
       "value_profile":{"estimated_zero":sum(r.get("valorTotalEstimado")==0 for r in rows),"estimated_negative":sum(isinstance(r.get("valorTotalEstimado"),(int,float)) and r.get("valorTotalEstimado")<0 for r in rows),"estimated_sum_brl":round(sum((r.get("valorTotalEstimado") or 0) for r in rows),2),"estimated_min_brl":min((r.get("valorTotalEstimado") for r in rows if isinstance(r.get("valorTotalEstimado"),(int,float))),default=None),"estimated_max_brl":max((r.get("valorTotalEstimado") for r in rows if isinstance(r.get("valorTotalEstimado"),(int,float))),default=None)},
       "issue_summary":{"total":len(issues),"by_severity":dict(sev),"by_code":dict(sorted(codes.items()))},"issues":issues,

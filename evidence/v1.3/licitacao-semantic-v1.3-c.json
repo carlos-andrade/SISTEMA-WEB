@@ -1,0 +1,182 @@
+{
+  "generated_at_utc": "2026-11-01T18:37:10+00:00",
+  "source": "carlos-andrade/LICITACAO",
+  "source_ref": "main",
+  "mode": "read-only",
+  "capture_timestamp_utc": "2026-10-30T15:08:35+00:00",
+  "business_timezone": "America/Sao_Paulo",
+  "source_artifacts_sha256": {
+    "EDITAIS/pncp-editais-metadados.json": "5fd323dfcd6ca17d88f4b0c99d9673edeeba8c6a4e270ce61c92f8128e058c6c",
+    "EDITAIS/pncp-editais-abertos.json": "7a209da86d1db61b2e7a44e94107c0db315c06d5530139018752152327a8ed36"
+  },
+  "scope": {
+    "records": 34,
+    "unique_control_ids": 34,
+    "duplicate_control_ids": [],
+    "metadata_status": "COMPLETO",
+    "api_reported_records": 34
+  },
+  "missingness_counts": {
+    "numeroControlePNCP": 0,
+    "orgaoEntidade": 0,
+    "unidadeOrgao": 0,
+    "dataInclusao": 0,
+    "dataAtualizacao": 0,
+    "dataAberturaProposta": 0,
+    "dataEncerramentoProposta": 0,
+    "dataPublicacaoPncp": 0,
+    "valorTotalEstimado": 0,
+    "modalidadeId": 0,
+    "modalidadeNome": 0,
+    "situacaoCompraId": 0,
+    "situacaoCompraNome": 0,
+    "objetoCompra": 0,
+    "valorTotalHomologado": 31,
+    "linkSistemaOrigem": 21,
+    "linkProcessoEletronico": 31
+  },
+  "distributions": {
+    "modalidadeId": {
+      "8": 34
+    },
+    "modalidadeNome": {
+      "Dispensa": 34
+    },
+    "situacaoCompraId": {
+      "1": 34
+    },
+    "situacaoCompraNome": {
+      "Divulgada no PNCP": 34
+    },
+    "modoDisputaNome": {
+      "Não se aplica": 1,
+      "Dispensa Com Disputa": 33
+    },
+    "tipoInstrumentoConvocatorioNome": {
+      "Edital": 1,
+      "Aviso de Contratação Direta": 33
+    },
+    "ufSigla": {
+      "BA": 3,
+      "GO": 13,
+      "SP": 1,
+      "RS": 4,
+      "MT": 1,
+      "PE": 1,
+      "PR": 3,
+      "RN": 1,
+      "RJ": 1,
+      "MG": 3,
+      "PI": 1,
+      "SE": 1,
+      "CE": 1
+    }
+  },
+  "value_profile": {
+    "estimated_zero": 4,
+    "estimated_negative": 0,
+    "estimated_sum_brl": 754029.73,
+    "estimated_min_brl": 0.0,
+    "estimated_max_brl": 64250.0
+  },
+  "issue_summary": {
+    "total": 10,
+    "by_severity": {
+      "MEDIUM": 10
+    },
+    "by_code": {
+      "ESTIMATED_VALUE_ZERO_REVIEW": 4,
+      "ORIGIN_LINK_NOT_ABSOLUTE": 6
+    }
+  },
+  "issues": [
+    {
+      "code": "ESTIMATED_VALUE_ZERO_REVIEW",
+      "severity": "MEDIUM",
+      "numeroControlePNCP": "61697546000138-1-000051/2026",
+      "field": "valorTotalEstimado",
+      "value": 0.0,
+      "message": "Valor zero requer confirmação na documentação do procedimento."
+    },
+    {
+      "code": "ORIGIN_LINK_NOT_ABSOLUTE",
+      "severity": "MEDIUM",
+      "numeroControlePNCP": "10572048000128-1-001462/2026",
+      "field": "linkSistemaOrigem",
+      "value": "www.peintegrado.pe.gov.br/Portal/Pages/DispensaLicitacoes.aspx?ncdmodulo=19&sdsprocesso=1529.2026.CCD.HRDM.DL.1356.SES&nCdProcesso=170556&nCdSituacao=2",
+      "message": "Não é URL HTTP(S) absoluta."
+    },
+    {
+      "code": "ESTIMATED_VALUE_ZERO_REVIEW",
+      "severity": "MEDIUM",
+      "numeroControlePNCP": "76238443000187-1-000116/2026",
+      "field": "valorTotalEstimado",
+      "value": 0.0,
+      "message": "Valor zero requer confirmação na documentação do procedimento."
+    },
+    {
+      "code": "ORIGIN_LINK_NOT_ABSOLUTE",
+      "severity": "MEDIUM",
+      "numeroControlePNCP": "11307015000113-1-000109/2026",
+      "field": "linkSistemaOrigem",
+      "value": "www.sigep.com.br",
+      "message": "Não é URL HTTP(S) absoluta."
+    },
+    {
+      "code": "ORIGIN_LINK_NOT_ABSOLUTE",
+      "severity": "MEDIUM",
+      "numeroControlePNCP": "02264166000140-1-000178/2026",
+      "field": "linkSistemaOrigem",
+      "value": "www.sigep.com.br",
+      "message": "Não é URL HTTP(S) absoluta."
+    },
+    {
+      "code": "ORIGIN_LINK_NOT_ABSOLUTE",
+      "severity": "MEDIUM",
+      "numeroControlePNCP": "02264166000140-1-000179/2026",
+      "field": "linkSistemaOrigem",
+      "value": "www.sigep.com.br",
+      "message": "Não é URL HTTP(S) absoluta."
+    },
+    {
+      "code": "ORIGIN_LINK_NOT_ABSOLUTE",
+      "severity": "MEDIUM",
+      "numeroControlePNCP": "02264166000140-1-000180/2026",
+      "field": "linkSistemaOrigem",
+      "value": "www.sigep.com.br",
+      "message": "Não é URL HTTP(S) absoluta."
+    },
+    {
+      "code": "ORIGIN_LINK_NOT_ABSOLUTE",
+      "severity": "MEDIUM",
+      "numeroControlePNCP": "11307015000113-1-000110/2026",
+      "field": "linkSistemaOrigem",
+      "value": "www.sigep.com.br",
+      "message": "Não é URL HTTP(S) absoluta."
+    },
+    {
+      "code": "ESTIMATED_VALUE_ZERO_REVIEW",
+      "severity": "MEDIUM",
+      "numeroControlePNCP": "01605008000144-1-000007/2026",
+      "field": "valorTotalEstimado",
+      "value": 0.0,
+      "message": "Valor zero requer confirmação na documentação do procedimento."
+    },
+    {
+      "code": "ESTIMATED_VALUE_ZERO_REVIEW",
+      "severity": "MEDIUM",
+      "numeroControlePNCP": "04776218000193-1-000020/2026",
+      "field": "valorTotalEstimado",
+      "value": 0.0,
+      "message": "Valor zero requer confirmação na documentação do procedimento."
+    }
+  ],
+  "limitations": [
+    "CNPJ validates check digits; IBGE checks seven-digit format only, not official municipality registry.",
+    "PNCP timestamps without offsets are interpreted as America/Sao_Paulo.",
+    "Zero estimated values are review warnings, not automatic errors.",
+    "Links are syntax-checked only and are not opened or probed.",
+    "Report concerns the captured snapshot, not current procurement status.",
+    "Source repository is accessed only via GitHub GET operations."
+  ]
+}
