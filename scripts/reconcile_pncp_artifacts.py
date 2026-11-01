@@ -195,7 +195,7 @@ def main():
             "ids_by_format": {name: len(ids) for name, ids in id_sets.items()},
         },
         "id_reconciliation": {
-            "same_id_set_all_three": len(set(id_sets.values())) == 1,
+            "same_id_set_all_three": id_sets["csv"] == id_sets["json_flattened"] == id_sets["xlsx"],
             "missing_ids_by_format": missing_ids,
             "duplicate_ids": duplicate_ids,
         },
