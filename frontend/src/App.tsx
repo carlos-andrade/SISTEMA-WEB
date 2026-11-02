@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
+import BuyerCatalogPanel from "./components/licitation/BuyerCatalogPanel";
 import {
   Activity, ArrowUpRight, Bell, Boxes, Command, Cpu, Database,
   Gauge, LayoutDashboard, Network, Server, ShieldCheck, Workflow,
@@ -223,7 +224,7 @@ export default function App() {
         { title: "Serviços do sistema operativo", detail: "Inventário e estado por agente/API ainda não integrados", state: "Não integrado" },
       ]}/>}
 
-      {active === "Integrações" && <LicitationIntegration />}
+      {active === "Integrações" && <><LicitationIntegration /><BuyerCatalogPanel /></>}
 
       {active === "Dados" && <Placeholder title="Dados" description="Camada responsável pela persistência, organização, qualidade e rastreabilidade da informação." icon={Database} items={[
         { title: "API de saúde", detail: "Resposta operacional consultada diretamente no backend", state: health ? "Disponível" : "Sem confirmação", kind: health ? "good" : "pending" },
