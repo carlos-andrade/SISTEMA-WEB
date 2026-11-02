@@ -102,7 +102,7 @@ export default function BuyerCatalogPanel() {
         <article className="card">
           <label>1 · UNIDADE COMPRADORA</label>
           <h3>{buyer?.name || "Selecione um órgão comprador"}</h3>
-          <div className="buyer-select-wrap"><select value={selectedUnit} onChange={e => void chooseUnit(e.target.value)} disabled={!buyer}><option value="">Selecione uma unidade</option>{buyer?.units.map(row => <option key={row.code + row.uf + row.municipio} value={row.code}>{row.name} · {row.municipio}/{row.uf} · {row.contract_count} contratação(ões)</option>)}</select><ChevronDown/></div>
+          <div className="buyer-select-wrap"><select value={selectedUnit} onChange={e => void chooseUnit(e.target.value)} disabled={!buyer}><option value="">Selecione uma unidade</option>{buyer?.units.map(row => <option key={row.key} value={row.key}>{row.name} · {row.municipio}/{row.uf} · {row.contract_count} contratação(ões)</option>)}</select><ChevronDown/></div>
           {unit && <p className="buyer-muted">CNPJ {selectedBuyer} · código da unidade {unit.code} · IBGE {unit.codigo_ibge || "não informado"}</p>}
         </article>
         <article className="card">
