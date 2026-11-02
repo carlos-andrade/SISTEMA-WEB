@@ -101,11 +101,14 @@ def _unit(record: dict[str, Any]) -> dict[str, Any] | None:
     name = str(unit.get("nomeUnidade") or "").strip()
     if not (code or name):
         return None
+    uf = str(unit.get("ufSigla") or unit.get("uf") or "").strip().upper()
+    municipio = str(unit.get("municipioNome") or "").strip()
     return {
         "code": code,
+        "key": "|".join((code, uf, municipio, name)),
         "name": name,
-        "uf": str(unit.get("ufSigla") or unit.get("uf") or "").strip().upper(),
-        "municipio": str(unit.get("municipioNome") or "").strip(),
+        "uf": uf,
+        "municipio": municipio,
         "codigo_ibge": str(unit.get("codigoIbge") or "").strip(),
     }
 
@@ -128,7 +131,7 @@ async def list_buyers(q: str = "", uf: str = "", municipio: str = "", page: int 
         buyer["contract_count"] += 1
         unit = _unit(record)
         if unit:
-            key = "|".join((unit["code"], unit["uf"], unit["municipio"]))
+            key = unit["key"]
             buyer["units"].setdefault(key, {**unit, "contract_count": 0})
             buyer["units"][key]["contract_count"] += 1
     query = q.casefold().strip()
@@ -169,7 +172,7 @@ async def list_unit_contracts(cnpj: str, unit_code: str) -> dict[str, Any]:
         if _buyer_key(record) != wanted:
             continue
         unit = _unit(record) or {}
-        if unit.get("code") != unit_code:
+        if unit.get("key") != unit_code:
             continue
         contracts.append({
             "control_id": record.get("numeroControlePNCP"),
