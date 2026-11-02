@@ -141,7 +141,13 @@ async def list_buyers(q: str = "", uf: str = "", municipio: str = "", page: int 
         haystack = " ".join([buyer["cnpj"], buyer["name"], *(u["name"] for u in units), *(u["municipio"] for u in units)]).casefold()
         if query and query not in haystack:
             continue
-        rows.append({**buyer, "units": matching_units if (uf or municipio) else units, "unit_count": len(units)})
+        visible_units = matching_units if (uf or municipio) else units
+        rows.append({
+            **buyer,
+            "units": visible_units,
+            "unit_count": len(visible_units),
+            "contract_count": sum(unit["contract_count"] for unit in visible_units) if (uf or municipio) else buyer["contract_count"],
+        })
     rows.sort(key=lambda item: (item["name"].casefold(), item["cnpj"]))
     total = len(rows)
     start = (page - 1) * page_size
