@@ -1,3 +1,4 @@
+import httpx
 from fastapi import APIRouter, HTTPException, Query
 
 from app.buyer_catalog import (
@@ -22,6 +23,8 @@ async def buyers(
         return await list_buyers(q=q, uf=uf, municipio=municipio, page=page, page_size=page_size)
     except BuyerCatalogError as exc:
         raise HTTPException(status_code=502, detail=str(exc)) from exc
+    except (httpx.HTTPError, ValueError) as exc:
+        raise HTTPException(status_code=502, detail="Falha de comunicação ou resposta inválida na fonte externa.") from exc
 
 
 @router.get("/buyers/{cnpj}/units/{unit_code}/contracts")
