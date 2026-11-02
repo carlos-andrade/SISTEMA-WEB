@@ -203,7 +203,7 @@ def _pncp_url(record: dict[str, Any]) -> str | None:
 
 
 async def fetch_contract_items(cnpj: str, year: int, sequence: int) -> dict[str, Any]:
-    if not re.fullmatch(r"[0-9A-Z]{14}", cnpj.upper()) or year < 2000 or sequence < 1:
+    if not re.fullmatch(r"[0-9A-Z]{12}[0-9]{2}", cnpj.upper()) or year < 2000 or sequence < 1:
         raise BuyerCatalogError("Identificador da contratação inválido.")
     url = f"{PNCP_API}/orgaos/{cnpj.upper()}/compras/{year}/{sequence}/itens"
     items = []
