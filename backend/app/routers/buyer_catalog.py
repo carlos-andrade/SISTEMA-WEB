@@ -25,6 +25,8 @@ async def buyers(
         raise HTTPException(status_code=502, detail=str(exc)) from exc
     except (httpx.HTTPError, ValueError) as exc:
         raise HTTPException(status_code=502, detail="Falha de comunicação ou resposta inválida na fonte externa.") from exc
+    except (httpx.HTTPError, ValueError) as exc:
+        raise HTTPException(status_code=502, detail="Falha de comunicação ou resposta inválida na fonte externa.") from exc
 
 
 @router.get("/buyers/{cnpj}/units/{unit_code}/contracts")
@@ -33,6 +35,8 @@ async def unit_contracts(cnpj: str, unit_code: str):
         return await list_unit_contracts(cnpj, unit_code)
     except BuyerCatalogError as exc:
         raise HTTPException(status_code=502, detail=str(exc)) from exc
+    except (httpx.HTTPError, ValueError) as exc:
+        raise HTTPException(status_code=502, detail="Falha de comunicação ou resposta inválida na fonte externa.") from exc
 
 
 @router.get("/contracts/{cnpj}/{year}/{sequence}/items")
