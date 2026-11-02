@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { AlertCircle, ChevronDown, RefreshCw, ShoppingBasket } from "lucide-react";
 
-type Unit = { code: string; name: string; uf: string; municipio: string; codigo_ibge: string; contract_count: number };
+type Unit = { key: string; code: string; name: string; uf: string; municipio: string; codigo_ibge: string; contract_count: number };
 type Buyer = { cnpj: string; name: string; cnpj_valid: boolean; unit_count: number; contract_count: number; units: Unit[] };
 type Contract = { control_id: string; cnpj: string; year: number; sequence: number; number: string; process: string; object: string; status: string; published_at: string; proposal_end: string; estimated_value: number | null; pncp_url: string | null };
 type Item = { number: number; description: string; type: string; quantity: number; unit: string; unit_estimated_value: number | null; total_estimated_value: number | null; budget_confidential: boolean; status: string; award_criterion: string; benefit: string; catalog_code: string; ncm_nbs_code: string; has_result: boolean };
@@ -22,7 +22,7 @@ export default function BuyerCatalogPanel() {
   const [error, setError] = useState("");
 
   const buyer = useMemo(() => buyers.find(row => row.cnpj === selectedBuyer), [buyers, selectedBuyer]);
-  const unit = useMemo(() => buyer?.units.find(row => row.code === selectedUnit), [buyer, selectedUnit]);
+  const unit = useMemo(() => buyer?.units.find(row => row.key === selectedUnit), [buyer, selectedUnit]);
   const contract = useMemo(() => contracts.find(row => row.control_id === selectedContract), [contracts, selectedContract]);
 
   async function loadBuyers() {
