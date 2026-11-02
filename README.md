@@ -46,7 +46,8 @@ Instruções: [docs/V1-BOOTSTRAP.md](docs/V1-BOOTSTRAP.md).
 2. **V1.1 — Navegação e validação:** seis módulos, comunicação frontend/API e homologação manual.
 3. **V1.2 — LICITACAO read-only:** conector GitHub privado, validação JSON Schema e apresentação da oportunidade de referência com proveniência. **Aprovado para prova de conceito em laboratório, com âmbito limitado.** Ver [relatório de homologação](docs/V1.2-HOMOLOGACAO.md) e [documentação da integração](docs/V1.2-INTEGRACAO-LICITACAO.md).
 4. **V1.3 — Catálogo de oportunidades:** inventário da fonte, listagem paginada, pesquisa, filtros, preservação do original, proveniência e histórico de alterações. **Especificado; implementação ainda não iniciada.** Ver [especificação V1.3](docs/V1.3-ESPECIFICACAO-CATALOGO-OPORTUNIDADES.md).
-5. **V2 — Fundação aplicacional:** autenticação e persistência após desenho dos requisitos.
+5. **V1.3-D — Catálogo de compradores e itens:** órgãos, unidades, contratações e consulta sob demanda dos itens no PNCP. Implementação em branch de revisão; homologação local pendente. Ver [documentação V1.3-D](docs/V1.3-D-CATALOGO-ORGAOS-UNIDADES-ITENS.md).
+6. **V2 — Fundação aplicacional:** autenticação e persistência após desenho dos requisitos.
 6. **V3 — Módulos funcionais:** domínios e integrações adicionais.
 7. **Homologação de produção:** segurança, backups, recuperação, observabilidade e implantação controlada.
 
