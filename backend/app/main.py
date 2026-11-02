@@ -9,12 +9,14 @@ from app.licitation_source import (
     SourceValidationError,
     read_reference_opportunity,
 )
+from app.routers.buyer_catalog import router as buyer_catalog_router
 
 app = FastAPI(
     title="SISTEMA WEB API",
     description="API central da plataforma SISTEMA WEB.",
-    version="1.2.0",
+    version="1.3.1",
 )
+app.include_router(buyer_catalog_router)
 
 
 @app.get("/api/health", tags=["Operação"])
